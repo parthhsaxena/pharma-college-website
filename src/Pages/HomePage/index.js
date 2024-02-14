@@ -55,24 +55,38 @@ const HomePage = () => {
       <div>
         <div
           style={{
-            height: "6px",
-            width: "100px",
-            backgroundColor: "#05b5c4",
-            border: "none",
-            borderRadius: "100px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            textAlign: "center",
+            margin: "1rem",
           }}
         >
+          <div
+            style={{
+              justifyContent: "center",
+              height: "6px",
+              width: "150px",
+              backgroundColor: "#1976d2",
+              border: "none",
+              borderRadius: "100px",
+              margin: "auto",
+            }}
+          ></div>
+
           <Typography
             variant="h4"
             style={{
               textAlign: "center",
               padding: "1rem",
-              fontWeight: "bold",
+              justifySelf: "start",
+              // fontWeight: "bold",
             }}
           >
             INFRASTRUCTURE
           </Typography>
         </div>
+
         <div
           style={{
             display: "flex",
@@ -99,6 +113,7 @@ const HomePage = () => {
               margin: "auto",
               background: "lightgray",
               borderRadius: "5rem",
+              padding: "1px",
             }}
           >
             <AppButtonGroup
@@ -106,24 +121,23 @@ const HomePage = () => {
               label="Campus"
               buttonSelect={buttonSelect}
               setButtonSelect={setButtonSelect}
-              style={{ borderRadius: "5rem", padding: "0.5rem 5rem" }}
             />
             <AppButtonGroup
               id={2}
               label="Library"
               buttonSelect={buttonSelect}
               setButtonSelect={setButtonSelect}
-              style={{ borderRadius: "5rem", padding: "0.5rem 5rem" }}
             />
             <AppButtonGroup
               id={3}
               label="Classrooms"
               buttonSelect={buttonSelect}
               setButtonSelect={setButtonSelect}
-              style={{ borderRadius: "5rem", padding: "0.5rem 5rem" }}
             />
           </ButtonGroup>
         </div>
+        {/* sdjhaksdjahg */}
+        <div></div>
       </div>
     </>
   );
