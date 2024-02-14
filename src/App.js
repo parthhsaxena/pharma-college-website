@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, useEffect, useState } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import Pages from "./Pages";
+import { LinearProgress } from "@mui/material";
+import Header from "./Components/Header";
+import InformationModal from "./Components/InformationModal";
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsModalOpen(true);
+  }, [location.pathname]);
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <Header />
+      <Suspense fallback={<LinearProgress />}>
+        <div
+          style={{
+            position: "relative",
+            top: "4rem",
+            margin: "-12px",
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Routes>
+            <Route path="/" element={Pages.HOME_PAGE} />
+            <Route path="/about" element={Pages.ABOUT_PAGE} />
+            <Route path="/contact" element={Pages.CONTACT_PAGE} />
+            <Route path="/admission" element={Pages.ADMISSION_PAGE} />
+          </Routes>
+        </div>
+      </Suspense>
+
+      <InformationModal isOpen={isModalOpen} onClose={handleCloseModal} />
+    </>
   );
 }
 
