@@ -21,10 +21,6 @@ const AppButtonGroup = ({
       style={{
         borderRadius: "5rem",
         padding: "0.5rem 5rem",
-        boxShadow:
-          +buttonSelect === id
-            ? "0px 4px 10px rgba(25, 118, 210, 0.6)"
-            : "none",
       }}
       {...props}
     >

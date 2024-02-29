@@ -1,10 +1,40 @@
 import React, { useState } from "react";
-import { Typography } from "@mui/material";
+import { Typography, ImageList, ImageListItem } from "@mui/material";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import HOME_MAIN_VIDEO from "../../Assets/HomepageMain.mp4";
 import AppButtonGroup from "../../Utilities/AppButtonGroup";
+import ImageStyles from "../../Utilities/ImageStyles";
 const HomePage = () => {
   const [buttonSelect, setButtonSelect] = useState(1);
+  const classes = ImageStyles();
+
+  const photos = [
+    {
+      id: 1,
+      src: "https://st2.depositphotos.com/1006611/8886/i/450/depositphotos_88860222-stock-photo-indian-college-student.jpg",
+      title: "Photo 1",
+    },
+    {
+      id: 2,
+      src: "https://st2.depositphotos.com/5653638/42141/i/450/depositphotos_421417402-stock-photo-young-asian-indian-college-students.jpg",
+      title: "Photo 2",
+    },
+    {
+      id: 3,
+      src: "https://img.freepik.com/premium-photo/young-asian-indian-college-students-reading-books-studying-laptop-preparing-exam-working-group-project-while-sitting-grass-staircase-steps-college-campus_466689-8150.jpg",
+      title: "Photo 3",
+    },
+    {
+      id: 4,
+      src: "https://images.pexels.com/photos/5147364/pexels-photo-5147364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      title: "Photo 4",
+    },
+    {
+      id: 5,
+      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiO_79iFJTE5j-PAkiGVNouYDOOEXTCa4Nig&usqp=CAU",
+      title: "Photo 5",
+    },
+  ];
 
   return (
     <>
@@ -136,8 +166,25 @@ const HomePage = () => {
             />
           </ButtonGroup>
         </div>
-        {/* sdjhaksdjahg */}
-        <div></div>
+        {/* Images of infrastructuure */}
+        <div className={classes.root}>
+          <ImageList
+            variant="masonry"
+            className={classes.imageList}
+            cols={3}
+            gap={50}
+          >
+            {photos.map((photo) => (
+              <ImageListItem key={photo.id}>
+                <img
+                  className={classes.image}
+                  src={photo.src}
+                  alt={`Photo ${photo.id}`}
+                />
+              </ImageListItem>
+            ))}
+          </ImageList>
+        </div>
       </div>
     </>
   );
