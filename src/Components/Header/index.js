@@ -46,6 +46,7 @@ const Header = () => {
             <div>
               {ROUTES.map(({ title, url, id }) => (
                 <Button
+                  key={id}
                   variant="text"
                   onClick={() => {
                     navigate(url);

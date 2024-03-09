@@ -4,11 +4,9 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import HOME_MAIN_VIDEO from "../../Assets/HomepageMain.mp4";
 import AppButtonGroup from "../../Utilities/AppButtonGroup";
 import ImageStyles from "../../Utilities/ImageStyles";
-const HomePage = () => {
-  const [buttonSelect, setButtonSelect] = useState(1);
-  const classes = ImageStyles();
 
-  const photos = [
+const HomePage = () => {
+  const campusPhotos = [
     {
       id: 1,
       src: "https://st2.depositphotos.com/1006611/8886/i/450/depositphotos_88860222-stock-photo-indian-college-student.jpg",
@@ -36,6 +34,37 @@ const HomePage = () => {
     },
   ];
 
+  const libraryPhotos = [
+    {
+      id: 6,
+      src: "https://images.pexels.com/photos/1370295/pexels-photo-1370295.jpeg",
+      title: "Photo 6",
+    },
+    {
+      id: 7,
+      src: "https://images.pexels.com/photos/9572688/pexels-photo-9572688.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      title: "Photo 7",
+    },
+    {
+      id: 8,
+      src: "https://static8.depositphotos.com/1227027/943/i/450/depositphotos_9436002-stock-photo-public-library.jpg",
+      title: "Photo 8",
+    },
+    {
+      id: 9,
+      src: "https://media.istockphoto.com/id/949118068/photo/books.webp?b=1&s=170667a&w=0&k=20&c=yzRVIZiIuacZSNf8fBBQiokhJJh2FO6F1EZ4zeZchUY=",
+      title: "Photo 9",
+    },
+    {
+      id: 10,
+      src: "https://images.pexels.com/photos/1907785/pexels-photo-1907785.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      title: "Photo 10",
+    },
+  ];
+
+  const [buttonSelect, setButtonSelect] = useState(1);
+  const [imgBundle, setImgBundle] = useState(campusPhotos);
+  const classes = ImageStyles();
   return (
     <>
       {/* Home page video  */}
@@ -151,22 +180,30 @@ const HomePage = () => {
               label="Campus"
               buttonSelect={buttonSelect}
               setButtonSelect={setButtonSelect}
+              setImgBundle={setImgBundle}
+              imgBundle={imgBundle}
+              campusPhotos={campusPhotos}
             />
             <AppButtonGroup
               id={2}
               label="Library"
               buttonSelect={buttonSelect}
               setButtonSelect={setButtonSelect}
+              setImgBundle={setImgBundle}
+              imgBundle={imgBundle}
+              libraryPhotos={libraryPhotos}
             />
             <AppButtonGroup
               id={3}
               label="Classrooms"
               buttonSelect={buttonSelect}
               setButtonSelect={setButtonSelect}
+              setImgBundle={setImgBundle}
+              imgBundle={imgBundle}
             />
           </ButtonGroup>
         </div>
-        {/* Images of infrastructuure */}
+        {/* Images of infrastructure */}
         <div className={classes.root}>
           <ImageList
             variant="masonry"
@@ -174,7 +211,7 @@ const HomePage = () => {
             cols={3}
             gap={50}
           >
-            {photos.map((photo) => (
+            {imgBundle.map((photo) => (
               <ImageListItem key={photo.id}>
                 <img
                   className={classes.image}
